@@ -13,9 +13,11 @@ numberType = ""
 numberCounter0 = 10
 numberCounter00 = 100
 result = 0
+min = 0
+max = 999
 while True:
     number = int(input("введите число от 1 до 999: "))
-    if (0 < number | number < 999):
+    if (min < number | number < max):
         if number // numberCounter0 == 0:
             numberType = "цифра"
             result = number * number
