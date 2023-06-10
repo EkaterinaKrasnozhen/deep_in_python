@@ -8,24 +8,27 @@
 # Откажитесь от магических чисел
 # В коде должны быть один input и один print
 
-number = int(input("введите число от 1 до 999: "))
+
 numberType = ""
 numberCounter0 = 10
 numberCounter00 = 100
-numberCounter000 = 1000
 result = 0
-if number // numberCounter0 == 0:
-    numberType = "цифра"
-    result = number * number
-elif number // numberCounter00 == 0: #возможно надо было оставить 10, 100 и 1000 числами
-    numberType = "двузначное число"
-    result = (number%10) * (number//10)
-elif number // numberCounter000 == 0:
-    numberType = "трёхзначное число"
-    num3 = (number%10) * numberCounter00
-    number = number//10
-    num2 = (number%10) * numberCounter0
-    num1 = number//10
-    result = num3 + num2 + num1
-    
-print(numberType, result)
+while True:
+    number = int(input("введите число от 1 до 999: "))
+    if (0 < number | number < 999):
+        if number // numberCounter0 == 0:
+            numberType = "цифра"
+            result = number * number
+        elif number // numberCounter00 == 0: #возможно надо было оставить 10, 100 и 1000 числами
+            numberType = "двузначное число"
+            result = (number%numberCounter0) * (number//numberCounter0)
+        else:
+            numberType = "трёхзначное число"
+            num3 = (number%numberCounter0) * numberCounter00
+            number = number//numberCounter0
+            num2 = (number%numberCounter0) * numberCounter0
+            num1 = number//numberCounter0
+            result = num3 + num2 + num1     
+    else:
+        continue
+    print(numberType, result)
