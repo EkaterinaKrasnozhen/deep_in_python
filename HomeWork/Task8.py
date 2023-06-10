@@ -14,6 +14,6 @@ count = 1
 SPACE = " "
 spaceCount = number-1
 for i in range(number):
-        print((SPACE * spaceCount) + ("*" * count))
-        count += 2
-        spaceCount -= 1
+    print((SPACE * spaceCount) + ("*" * count))
+    count += 2
+    spaceCount -= 1
