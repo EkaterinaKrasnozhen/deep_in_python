@@ -8,47 +8,74 @@
 # если больше 5 млн - налог на богатство 10% перед каждой операцией, даже ошибочной
 # любое действие выводит сумму денег
 
-balance = 6000
+# снятие
 def minus(summ, balance):
-    percent = (balance / 100) * 1.5
-    if 30 > percent:
-        percent = 30
-    elif percent > 600:
-        percent = 600
-    balance = balance - summ - percent
-    print(balance)
+    percent = (balance / 100) * 1.5 # по-моему на семинаре озвучили, что % \
+        #именно от общего баланса, но наверно правильнее от суммы снятия. Делаю от общего баланса
+    if balance > summ + percent:
+        if 30 > percent:
+            percent = 30
+        elif percent > 600:
+            percent = 600
+        balance = balance - summ - percent
+        print(balance)
+    else:
+        print("Баланс с учетом % за снятие меньше снимаемой суммы")
+    return balance
 
+# внесение
 def plus_(summ, balance):
-    if balance > 5000:
-        balance /= 10
     balance = float(balance + summ)
     print(balance)
+    return balance
 
+# выход
 def bye():
+    print("бланс" + str(balance))
     print("До свидания")
+    exit()
     
-def get_sum_50():
-    user_summ = int(input("Введите сумму, кратную 50: "))
-    if user_summ % 50 != 0:
-        user_summ = int(input("Введите сумму, кратную 50: "))
-    return user_summ
     
-answer = input("Действия: 1 - Пополнить, 2 - Снять, 3 - Выход")
+count = 0
+balance = 6000000000000
 
-match answer:
-    case "1":
-        user_summ = int(input("Введите сумму, кратную 50: "))
-        if user_summ % 50 == 0:
-            plus_(user_summ, balance)
-        else:
-            user_summ = input("Сумма не кратна 50, повторите ввод: ")
-            plus_(user_summ, balance)
-
-    case "2":
-        user_summ = int(input("Введите сумму, кратную 50: "))
-        if user_summ % 50 == 0:
-            minus(user_summ, balance)
+#не пойму куда вводить переменные balance и count чтобы внутри бесконечного цикла сохранялись текущие значения?
+while True:
+    
+    answer = input("Действия: 1 - Пополнить, 2 - Снять, 3 - Выход")
+    
+    if count % 3 == 0 and count != 0 :
+        balance = balance * 1.3
+        print("Ура, вы получили 3% бонуса " + str(balance))
+    
+    if balance > 5000:
+        balance /= 10
+        print("налог на богатство минус 10%, баланс = " + str(balance))
+    
+    
+    match answer:
         
+        case "1":
+            user_summ = int(input("Введите сумму, кратную 50: "))
+            if user_summ % 50 != 0:
+                print("Выввели неверную сумму и вернетесь в главное меню. Баланс: "+ str(balance))
+                continue
+            else:
+                balance = plus_(user_summ, balance)
+                count += 1
 
-    case "3":
-        bye()
+        case "2":
+            user_summ = int(input("Введите сумму, кратную 50: "))
+            if user_summ % 50 != 0:
+                print("Вы ввели неверную сумму и вернетесь в главное меню. Баланс: "+ str(balance))
+                continue
+            else:
+                balance = minus(user_summ, balance)
+                count += 1
+                
+        case "3":
+            bye()
+            
+        case _:
+            print("Вы ввели неверные данные")
+            continue
