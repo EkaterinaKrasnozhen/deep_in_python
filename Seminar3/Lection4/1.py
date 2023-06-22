@@ -261,3 +261,30 @@ print(chr(1105))#ё
 
 #ord - по символу вернет код
 print(ord('ё'))#1105
+
+# locals()
+
+SIZE = 10
+
+def f(a,b,c):
+    x = a + b
+    print(locals()) # z не видим, тк после, SIZE не видим за пределами
+    z = x + c
+    return z
+
+f(1,2,3)#{'a': 1, 'b': 2, 'c': 3, 'x': 3} только локальные объекты до момента вызова, для чтения
+
+def f2(a,b,c):
+    x = a + b
+    print(globals()) # z не видим, тк после, SIZE не видим за пределами
+    z = x + c
+    return z
+
+f2(1,2,3) #куча всего, но локальных нет
+m = 42
+glob_dict = globals() #можем изменить значение
+glob_dict['m'] = 70
+print(m)#70
+
+#vars как locals( но лучше locals)
+print(vars(int))#Получили все дандер методы класса int
