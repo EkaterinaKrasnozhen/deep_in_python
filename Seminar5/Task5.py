@@ -8,18 +8,26 @@
 # должна выводить слово «FizzBuzz».
 # ✔ *Превратите решение в генераторное выражение.
 
-
+# многострочный генератор
 def gen_():
     for i in range(1, 101):
-        if i % 3 == 0:
-            yield "Fizz"
+        if i % 15 == 0:
+            yield "FizzBuzz"
         elif i % 5 == 0:
             yield "Buzz"
-        elif i % 15 == 0:
-            yield "FizzBuzz"
+        elif i % 3 == 0:
+            yield "Fizz"
         else:
             yield i
         
         
-res1 = gen_()
-print(*res1)
+# res1 = gen_()
+# print(*res1)
+
+#однострочный генератор
+gen2 = ('FizzBuzz' if i % 15 == 0 else\
+        'Fizz'if i % 3 == 0 else\
+       'Buzz'if i % 5 == 0 else\
+        i for i in range(1, 101))
+
+print(*gen2)
