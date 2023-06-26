@@ -34,6 +34,7 @@ def calend(date):
             return True
     return False
 
+
 if __name__ == '__main__':
     print(calend('28.02.2022'))
             
