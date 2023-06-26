@@ -8,3 +8,4 @@ __top_secret = 'qweasd' #сверхсекретная
 def func(a: int, b: int) ->str:
     z = f"в диапазоне от {a} до {b} получили = {randint(a,b)}"
     return z
+
