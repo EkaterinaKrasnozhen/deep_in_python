@@ -7,10 +7,8 @@ import Task2_zagadki as zd
 # res = zd.get_info(txt, list_ans, ans, int(num))
 # print(res)
 
-res_dict = zd.ridd_dic()
 
 
-for key, value in res_dict.items():
-    ans, num = input(f'Отгадайте загадку {key}. Введите ответ и количество попыток через пробел:').lower().split(' ')
-    result = zd.get_info(key, value, ans, int(num))
-    print(result)
+
+zd.ridd_dic()
+zd.show_res_dict()
