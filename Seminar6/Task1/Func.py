@@ -18,21 +18,18 @@ def try_get(num, count):
         if num < user_num:
             count -= 1
             print("ваше число больше загаданного, осталось попыток: ", count)
-
         elif num > user_num:
             count -=1
             print("ваше число меньше загаданного, осталось попыток: ", count)
-
         else:
             return True
-
-
     else:
         return False
         
 
 if __name__ == '__main__':
-    _, *params = argv
+    _, *params = argv # запаковали в params 3 аргумента, первый имя файла - всегла в argv отбросили
     print(params)
     my_num = generate_rnd(int(params[0]), int(params[1]))
     print(try_get(int(my_num), int(params[2])))
+    #если бы все params принимала одна функция some_fuc(*map(int, params)) распаковали params  в инты
