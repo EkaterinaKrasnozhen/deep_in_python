@@ -4,6 +4,7 @@
 # Функция выводит подсказки “больше” и “меньше”.
 # Если число угадано, возвращается истина, а если попытки исчерпаны - ложь.
 import random as rnd
+import sys # через терминал python Func.py 1 5 2
 
 def generate_rnd(start, stop):
     num = rnd.randint(start, stop)
@@ -31,5 +32,6 @@ def try_get(num, count):
         
 
 if __name__ == '__main__':
-    print(f'{generate_rnd(2, 10)=}')
-    print(f'{count_(0)}')
+    _, start_, stop_, num_count = sys.argv
+    my_num = generate_rnd(int(start_), int(stop_))
+    print(try_get(int(my_num), int(num_count)))
