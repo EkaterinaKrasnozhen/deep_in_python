@@ -107,16 +107,26 @@ text = ['hello', 'my name', 'is']
 #     print(f.tell())# 20
 
 # seek(offset, whence=0) смещение от опорной точки, whence0 отсчет от начала файла, когда текст всегда 0, либо 2 - конец, 1 текущая (байт)
-last = before = 0
-with open('new_text_data2.txt', 'r+', encoding='utf-8') as f: #читать и записать
-    while line := f.readline():
-        last, before = f.tell(), last
-        print(f'{last=}, {before=}') #last=7, before=0
-    print(f'{last=}, {before=}')#last=16, before=7, last=18, before=16
-    print(f'{f.seek(before, 0)=}')#f.seek(before, 0)=16 - поставили курсов в нужное место и перезаписали
-    f.write('\n'.join(text))
+# last = before = 0
+# with open('new_text_data2.txt', 'r+', encoding='utf-8') as f: #читать и записать
+#     while line := f.readline():
+#         last, before = f.tell(), last
+#         print(f'{last=}, {before=}') #last=7, before=0
+#     print(f'{last=}, {before=}')#last=16, before=7, last=18, before=16
+#     print(f'{f.seek(before, 0)=}')#f.seek(before, 0)=16 - поставили курсов в нужное место и перезаписали
+#     f.write('\n'.join(text))
 
-    
+#truncate()    
+# last = before = 0
+# with open('new_text_data2.txt', 'r+', encoding='utf-8') as f: #читать и записать
+#     while line := f.readline():
+#         last, before = f.tell(), last
+#     print(f.seek(before, 0)) # 32, переносим курсор в конец строки с before
+#     print(f.truncate()) # 32, вырезает по текущей поз урсора строку
+
+size = 12
+with open('new_text_data2.txt', 'r+', encoding='utf-8') as f:
+    print(f.truncate(size)) # обрезает по кол-ву заданных симоволов
 
 
 
