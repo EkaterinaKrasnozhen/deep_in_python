@@ -8,6 +8,7 @@
 
 from random import choice
 
+
 def file_names():
     res = ''
     for _ in range(4, 7):        
