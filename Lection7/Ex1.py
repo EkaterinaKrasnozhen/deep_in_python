@@ -106,7 +106,8 @@ text = ['hello', 'my name', 'is']
 #         print(f.tell())# 7, 16, 20
 #     print(f.tell())# 20
 
-# seek(offset, whence=0) смещение от опорной точки, whence0 отсчет от начала файла, когда текст всегда 0, либо 2 - конец, 1 текущая (байт)
+# seek(offset, whence=0) seek = смещение от опорной точки (если seek(-2, 1) - на два шага назад, с текущей позиции 1), whence 0 отсчет от начала файла, (когда текст всегда 0), либо 2 - конец, 1 текущая (байт)
+# f.seek(0) - вернуться в начало
 # last = before = 0
 # with open('new_text_data2.txt', 'r+', encoding='utf-8') as f: #читать и записать
 #     while line := f.readline():
