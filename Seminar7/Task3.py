@@ -15,59 +15,33 @@
 from pathlib import Path
 import typing
 
-def read_line(file: typing.TextIO):
+
+def read_line(file: typing.TextIO):# если при записи закончились строки в читаемом файле, переносим курсор в начало
     line = file.readline()
     if line == '':
         file.seek(0)
         line = file.readline()
-    
-    return line[:-1]
+    return line[:-1] #убрать последнюю пустую строку
 
 def my_func():
-    my_list = [] # результат перемножения
-    my_list_names = []
+
     with (
             open('1.txt', 'r', encoding='utf-8') as fnums,
             open('names.txt', 'r', encoding='utf-8') as fnames,
-            open('res.txt', 'a', encoding='utf-8') as fres
+            open('res.txt', 'a+', encoding='utf-8') as fres
     ):
-    #     lines1 = len(f2.readlines())
-        len1 = sum(True for _ in fnums)
+        len1 = sum(True for _ in fnums) #количество строк в файле
         len2 = sum(True for _ in fnames)
         
-        for _ in range(max(len1, len2)):
+        for _ in range(max(len1, len2)): 
             names = read_line(fnames)
             nums = read_line(fnums)
-        
-    #     for line in f2:
-    #         my_list.append(int(line.split('|')[0]) * float(line.split('|')[1][:-1]))
-        
-    #     lines2 = len(f1.readlines())
-        
-    #     for line in f1:
-    #         my_list_names.append(line.replace('\n', '').split(' '))
-    #     print(my_list_names)
-    #     #while line := lines1:
-    #         # for num in my_list:
-    #         #     if num < 0:'
-    #         #f3.write('\n'.join(str(c).lower(), n) for c in my_list_names for n in my_list if n < 0)
-        
-        
-    # with open('1.txt', 'r', encoding='utf-8') as f2:
-    #     for line in f2:
-    #         my_list.append(int(line.split('|')[0]) * float(line.split('|')[1][:-1]))
-            
-    
-    # with open('names.txt', 'r', encoding='utf-8') as f1:
-    #     for line in f1:
-    #         my_list_names.append(line.strip().split(' '))
-    
-    # # with open('result.txt', 'a', encoding='utf-8') as f3:
-    # #     for line in f3:
-    # #         my_list_names.append(line.replace('\n', '').split(' '))
-    # print(my_list, my_list_names)
-    # #result1 = [(str(c).lower().replace("[", "").replace("]", ""), n) for c in my_list_names for n in my_list if n > 0]
-    # result1 = [tuple(filter(lambda c: str(c).lower(), my_list_names))], [tuple(filter(lambda x: x > 0, my_list))]
-    # print(*result1)
+            res_sum = int(nums.split("|")[0]) * float(nums.split("|")[1])
+            if res_sum > 0:
+                fres.write(f'{str(names.lower())}, {int(res_sum)}\n')
+            else:
+                fres.write(f'{str(names.title())}, {str(res_sum)}\n')
 
-my_func()
+
+if __name__ == '__main__':
+    my_func()
