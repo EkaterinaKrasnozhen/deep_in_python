@@ -52,22 +52,44 @@ import csv
 #         print(f'{line["name"] = }\t{line["age"] = }')
 
 from typing import Iterator
-with (
-    open('bio.csv', 'r', newline='') as f_read,
-    open('bio_new.csv', 'w', newline='', encoding='utf-8') as f_write
-):
-    csv_read: Iterator[dict] = csv.DictReader(f_read, fieldnames=["Name", "Sex", "Age", "Height (in)", "Weight (lbs)", "Office"], # поля офисе нет в изначальном файле и бдует = restival
-                                            restval="Main Office", dialect='excel-tab', quoting=csv.QUOTE_NONNUMERIC)
-    csv_write = csv.DictWriter(f_write, fieldnames=["id", "Name", "Office", "Sex", "Age", "Height", "Weight"],
-                            dialect='excel-tab', quoting=csv.QUOTE_ALL) # заключить в кавычки все неважно текст или числа
-    csv_write.writeheader() # записываем заголовки из  61 строки
-    all_data = []
-    for i, dict_row in enumerate(csv_read):
-        if i != 0: # если не первая строка, тк это заголовок и его игнорируем
-            dict_row['id'] = i
-            #dict_row['age'] = int(dict_row['age'])
-            dict_row['Age'] += 1 # не работает как int
-            all_data.append(dict_row)
-    csv_write.writerows(all_data)
+# with (
+#     open('bio.csv', 'r', newline='') as f_read,
+#     open('bio_new.csv', 'w', newline='', encoding='utf-8') as f_write
+# ):
+#     csv_read: Iterator[dict] = csv.DictReader(f_read, fieldnames=["Name", "Sex", "Age", "Height (in)", "Weight (lbs)", "Office"], # поля офисе нет в изначальном файле и бдует = restival
+#                                             restval="Main Office", dialect='excel-tab', quoting=csv.QUOTE_NONNUMERIC)
+#     csv_write = csv.DictWriter(f_write, fieldnames=["id", "Name", "Office", "Sex", "Age", "Height", "Weight"],
+#                             dialect='excel-tab', quoting=csv.QUOTE_ALL) # заключить в кавычки все неважно текст или числа
+#     csv_write.writeheader() # записываем заголовки из  61 строки
+#     all_data = []
+#     for i, dict_row in enumerate(csv_read):
+#         if i != 0: # если не первая строка, тк это заголовок и его игнорируем
+#             dict_row['id'] = i
+#             #dict_row['age'] = int(dict_row['age'])
+#             dict_row['Age'] += 1 # не работает как int
+#             all_data.append(dict_row)
+#         csv_write.writerows(all_data)
+        
+        
+with open('quest.csv', 'w', newline='', encoding='utf-8') as f_write:
+    csv_write = csv.DictWriter(f_write, fieldnames=["number", "name", "data"], restval='Hello world!', dialect='excel',
+                delimiter='#', quotechar='=', quoting=csv.QUOTE_NONNUMERIC)
+    csv_write.writeheader()
+    dict_row = {}
+    for i in range(10):
+        dict_row['number'] = i
+        dict_row['name'] = str(i)
+        csv_write.writerow(dict_row)
+# =number=#=name=#=data=
+# 0#=0=#=Hello world!=
+# 1#=1=#=Hello world!=
+# 2#=2=#=Hello world!=
+# 3#=3=#=Hello world!=
+# 4#=4=#=Hello world!=
+# 5#=5=#=Hello world!=
+# 6#=6=#=Hello world!=
+# 7#=7=#=Hello world!=
+# 8#=8=#=Hello world!=
+# 9#=9=#=Hello world!=
 
 
