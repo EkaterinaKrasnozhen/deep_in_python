@@ -56,21 +56,18 @@ with (
     open('bio.csv', 'r', newline='') as f_read,
     open('bio_new.csv', 'w', newline='', encoding='utf-8') as f_write
 ):
-    cvs_file = csv.DictReader(f_read)
-    for line in cvs_file:
-        print(line['Name'])
-    # csv_read: Iterator[dict] = csv.DictReader(f_read, fieldnames=["Name", "Sex", "Age", "Height (in)", "Weight (lbs)", "Office"], # поля офисе нет в изначальном файле и бдует = restival
-    #                                         restval="Main Office", dialect='excel-tab', quoting=csv.QUOTE_NONNUMERIC)
-    # csv_write = csv.DictWriter(f_write, fieldnames=["id", "Name", "Office", "Sex", "Age", "Height", "Weight"],
-    #                         dialect='excel-tab', quoting=csv.QUOTE_ALL) # заключить в кавычки все неважно текст или числа
-    # csv_write.writeheader() # записываем заголовки из  61 строки
-    # all_data = []
-    # for i, dict_row in enumerate(csv_read):
-    #     if i != 0: # если не первая строка, тк это заголовок и его игнорируем
-    #         dict_row['id'] = i
-    #         #dict_row['age'] = int(dict_row['age'])
-    #         dict_row['Age'] += 1 # не работает как int
-    #         all_data.append(dict_row)
-    # csv_write.writerows(all_data)
+    csv_read: Iterator[dict] = csv.DictReader(f_read, fieldnames=["Name", "Sex", "Age", "Height (in)", "Weight (lbs)", "Office"], # поля офисе нет в изначальном файле и бдует = restival
+                                            restval="Main Office", dialect='excel-tab', quoting=csv.QUOTE_NONNUMERIC)
+    csv_write = csv.DictWriter(f_write, fieldnames=["id", "Name", "Office", "Sex", "Age", "Height", "Weight"],
+                            dialect='excel-tab', quoting=csv.QUOTE_ALL) # заключить в кавычки все неважно текст или числа
+    csv_write.writeheader() # записываем заголовки из  61 строки
+    all_data = []
+    for i, dict_row in enumerate(csv_read):
+        if i != 0: # если не первая строка, тк это заголовок и его игнорируем
+            dict_row['id'] = i
+            #dict_row['age'] = int(dict_row['age'])
+            dict_row['Age'] += 1 # не работает как int
+            all_data.append(dict_row)
+    csv_write.writerows(all_data)
 
 
