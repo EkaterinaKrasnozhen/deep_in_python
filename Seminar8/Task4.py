@@ -24,6 +24,7 @@ def to_json_from_csv(file_csv, file_json):
             if i != 0:
                 json_dict.append({'gread': gread, 'id_': id_.zfill(10), 'name': name.lower(), 'hash': hash(f'{name}{id_}')})     
         json.dump(json_dict, f_write, ensure_ascii=False, indent=1)
+        print(type(f_write))
 
           
-to_json_from_csv('new_.csv', 'last_json')
+to_json_from_csv('new_.csv', 'last_.json')

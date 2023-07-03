@@ -33,7 +33,7 @@ def add_id(file_json):
             print('Введите идентификатор от 1 до 7')
             continue
         
-    with open ('new_user_json', 'a', encoding='utf-8') as f:
+    with open ('new_user_.json', 'a', encoding='utf-8') as f:
         json.dump(my_dict, f, ensure_ascii=False)
         
         
