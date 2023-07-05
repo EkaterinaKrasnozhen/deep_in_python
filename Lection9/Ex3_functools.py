@@ -1,7 +1,8 @@
-from functools import wraps
+from functools import wraps, cache
 from typing import Callable
 import time
 
+#wraps
 def count(num: int = 1):# для приема параметров
     def deco(func: Callable):# для приема функции
         @wraps(func)
@@ -19,17 +20,33 @@ def count(num: int = 1):# для приема параметров
     return deco
 
 
-@count(3)
+# @count(3)
+# def factorial(n: int) -> int:
+#     """returns произведение чисел от 1 до N
+#     """
+#     f = 1
+#     for i in range(2, n + 1):
+#         f *= i
+#     return f
+
+# print(f'{factorial(3)=} {factorial.__name__=}') #Результаты замеров [6.6999346017837524e-06, 2.9001384973526e-06, 2.200016751885414e-06] 
+# #factorial.__name__='factorial' - не декоратор как без @wraps
+# help(factorial)
+#factorial(n: int) -> int
+#   returns произведение чисел от 1 до N#
+
+
+#cashe
+@cache
 def factorial(n: int) -> int:
     """returns произведение чисел от 1 до N
     """
+    print('вычисляю')
     f = 1
     for i in range(2, n + 1):
         f *= i
     return f
 
-print(f'{factorial(3)=} {factorial.__name__=}') #Результаты замеров [6.6999346017837524e-06, 2.9001384973526e-06, 2.200016751885414e-06] 
-#factorial.__name__='factorial' - не декоратор как без @wraps
-help(factorial)
-#factorial(n: int) -> int
-#   returns произведение чисел от 1 до N#
+print(factorial(3))#вычисляю 6
+print(factorial(5))#вычисляю 120
+print(factorial(3))#6 уже не вычисляет а берет из cache
