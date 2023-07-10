@@ -1,4 +1,7 @@
+# наследование
+
 class Person4:
+    
     __max_up = 3
     _max_level = 80
     def __init__(self, name, race='unknown', speed=100):
