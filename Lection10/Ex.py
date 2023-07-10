@@ -1,3 +1,4 @@
+# наследование
 class A:
     name = 'A'
     def call(self):
@@ -13,10 +14,10 @@ class C:
     def call(self):
         print(f'I am {self.name}')
 
-class D(C, A):
+class D(C, A): # super() автоматически наследует первый C
     pass
 
-class E(D, B):
+class E(D, B):# super() автоматически наследует первый C
     pass
 
 e = E()

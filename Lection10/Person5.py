@@ -17,7 +17,7 @@ class Person:
         if self._check_level():
             self.level += 1
         
-    def change_health(self, other, quantity):
+    def change_health(self, other, quantity): # полиморфизм, у реюенка класса Person = Hero есть тако же метод, но мы его переопределили и делает он другое
         self.health += quantity
         other.health -= quantity
     
