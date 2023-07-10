@@ -40,3 +40,6 @@ print(f'{p1.up = }')#p1.up = 3
 #attribute '__max_up'
 #print(Person.__max_up) # AttributeError: type object 'Person'
 #has no attribute '__max_up'
+
+print(p1._Person3__max_up) # 3 с помощьютакой записи дает обратиться к приватной
+print(Person3._Person3__max_up) # 3
