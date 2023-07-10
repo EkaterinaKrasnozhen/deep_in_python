@@ -1,4 +1,5 @@
 class User:
+    
     def __init__(self, name, phone, password):
         self.__name__ = name # магическая переменная, неверная запись
         self._phone = phone
