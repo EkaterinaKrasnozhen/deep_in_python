@@ -3,6 +3,7 @@
 class Person:
     __max_up = 3
     _max_level = 80
+    
     def __init__(self, name, race='unknown', speed=100):
         self.name = name
         self.race = race
@@ -10,6 +11,7 @@ class Person:
         self.health = 100
         self._speed = speed
         self.up = 3
+    
     def _check_level(self):
         return self.level < self._max_level
     
