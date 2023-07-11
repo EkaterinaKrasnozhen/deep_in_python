@@ -7,4 +7,4 @@ class Fishes(Animals):
         super().__init__(*args, **kwargs)
         
     def get_unique_info(self):
-        
+        pass
