@@ -12,4 +12,4 @@ class MyClass:
 
 x = MyClass(42, 2)
 y = MyClass(73, 3)
-print(x == y)#True
+print(x == y)#True всегда
