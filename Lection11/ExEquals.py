@@ -5,6 +5,9 @@ class Triangle:
         self.a = a
         self.b = b
         self.c = c
+        # self._a = a
+        # self._b = b
+        # self._c = c
 
     def __str__(self):
         return f'Треугольник со сторонами: {self.a}, {self.b}, {self.c}'
@@ -21,6 +24,10 @@ class Triangle:
 
     def __lt__(self, other):
         return self.area() < other.area()
+    
+    def __hash__(self): # переопределили hash и защитили данные _a _b _c
+        return hash((self._a, self._b, self._c))
+
 
 # one = Triangle(3, 4, 5)
 # two = one
@@ -31,14 +38,19 @@ class Triangle:
 # print(f'{one == four = }')#one == four = True
 # print(f'{one != one = }')#one != one = False
 
-one = Triangle(3, 4, 5)
-two = Triangle(5, 5, 5)
-print(f'{one} имеет площадь {one.area():.3f} у.е.²') #Треугольник со сторонами: 3, 4, 5 имеет площадь 6.000 у.е.²
-print(f'{two} имеет площадь {two.area():.3f} у.е.²')# Треугольник со сторонами: 5, 5, 5 имеет площадь 10.825 у.е.²
-print(f'{one > two = }\n{one < two = }')# one > two = False one < two = True
+# one = Triangle(3, 4, 5)
+# two = Triangle(5, 5, 5)
+# print(f'{one} имеет площадь {one.area():.3f} у.е.²') #Треугольник со сторонами: 3, 4, 5 имеет площадь 6.000 у.е.²
+# print(f'{two} имеет площадь {two.area():.3f} у.е.²')# Треугольник со сторонами: 5, 5, 5 имеет площадь 10.825 у.е.²
+# print(f'{one > two = }\n{one < two = }')# one > two = False one < two = True
 
-data = [Triangle(3, 4, 5), Triangle(6, 2, 5), Triangle(4, 4, 4),
-Triangle(3, 5, 3)]
-result = sorted(data)
-print(*result)#Треугольник со сторонами: 3, 5, 3 Треугольник со сторонами: 6, 2, 5 Треугольник со сторонами: 3, 4, 5 Треугольник со сторонами: 4, 4, 4
-print(', '.join(f'{item.area():.3f}' for item in result)) #4.146, 4.684, 6.000, 6.928
+# data = [Triangle(3, 4, 5), Triangle(6, 2, 5), Triangle(4, 4, 4),
+# Triangle(3, 5, 3)]
+# result = sorted(data)
+# print(*result)#Треугольник со сторонами: 3, 5, 3 Треугольник со сторонами: 6, 2, 5 Треугольник со сторонами: 3, 4, 5 Треугольник со сторонами: 4, 4, 4
+# print(', '.join(f'{item.area():.3f}' for item in result)) #4.146, 4.684, 6.000, 6.928
+
+triangle_set = {Triangle(3, 4, 5), Triangle(6, 2, 5), Triangle(4, 4, 4), Triangle(3, 5, 3)}
+print(triangle_set)
+print(', '.join(f'{hash(item)}' for item in triangle_set)) # unhashable type: 'Triangle' если убрать _eq_ то пайтон выдаст hash
+# либо переопределить hash и сделать данные защищеными _a
