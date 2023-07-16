@@ -9,7 +9,7 @@ class Fibonacci:
         return self
     
     def __next__(self):
-        while self.first < self.stop:
+        while self.start < self.stop:
             self.first, self.second = self.second, self.first + self.second
             if self.start <= self.first < self.stop:
                 return self.first
