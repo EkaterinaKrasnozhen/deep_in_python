@@ -7,7 +7,8 @@ MIN_TEST = 0
 MAX_TEST = 100
 
 def create_csv_lesson(*args, **kwargs):
-    id_ = [value for _, value in kwargs.items()][0]
+    """ Создаем словари со случайными оценками. """
+    id_ = [value for _, value in kwargs.items()][0]# нужное количество id студентов
     my_dic2 = {}
     for num in range(1, id_+1):
         for i in range(len(args)):
@@ -15,6 +16,7 @@ def create_csv_lesson(*args, **kwargs):
     return my_dic2
         
 def dump_to_csv(file_name, data):
+    """ Запись словаря в csv файл. """
     my_data = []    
     for id_, in_dict in data.items():
         for some in in_dict:
@@ -26,6 +28,7 @@ def dump_to_csv(file_name, data):
         cvs_write.writerows(my_data)
         
 def read_csv(file):
+    """ Чтения csv файла с сохранением в словарь. """
     data = {}
     with open(file, 'r', newline='', encoding='utf-8') as f:
         csv_file = csv.DictReader(f, fieldnames=['id', 'lesson', 'оценка', 'балл'], 
@@ -35,8 +38,9 @@ def read_csv(file):
                 data[line['id']] = data.get(line['id'], []) + [line['lesson'], line['оценка'], line['балл']]           
         return(data)
 
-#res = create_csv_lesson('русский', 'литература', 'математика', id=6)
 
-#dump_to_csv('studen2.csv', res)
-#data = read_csv('studen2.csv')
-#print(data['1'])
+if __name__ == '__main__':
+    res = create_csv_lesson('русский', 'литература', 'математика', id=6)
+    dump_to_csv('studen2.csv', res)
+    data = read_csv('studen2.csv')
+    print(data['1'])
