@@ -1,4 +1,6 @@
 from UserEx import UserNameError, UserAgeError
+
+
 class User:
     MIN_LEN = 6
     MAX_LEN = 30
