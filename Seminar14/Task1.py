@@ -15,13 +15,25 @@
 # (кроме п. 1)
 from string import ascii_letters
 
+
 def del_all(text: str) -> str:
+    """Возвращает строку в нижнем регистре, содержащую только символы латинского алфавита и пробелы.
+    >>> del_all('doctest pytest unitest') 
+    'doctest pytest unitest'
+    >>> del_all('Doctest Pytest Unitest') 
+    'doctest pytest unitest'
+    >>> del_all('doctest, pytest! unitest:') 
+    'doctest pytest unitest'
+    >>> del_all('doctest доктест pytest пайтест  unitest юнитест') 
+    'doctest  pytest   unitest '
+    >>> del_all('Doctest! доктест, Pytest пайтест:  Unitest? юнитест.') 
+    'doctest  pytest   unitest '
+    """
     new_text = ''.join(c for c in text if c in ascii_letters or c == ' ').lower()
     return new_text
 
 
 if __name__ == '__main__':
-    my_text = 'Hello my name is 345232 & i love sun% Катя'    
-    res = del_all(my_text)
-    print(res)
+    import doctest
+    doctest.testmod(verbose=True)
     
