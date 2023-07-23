@@ -11,7 +11,7 @@ def is_prime(p: int) -> bool:
             return False
     return True
 
-
+#убираем, если относится к документации и md файл
 if __name__ == '__main__':
     import doctest
     doctest.testmod(verbose=True)# или () без вывода на экран

@@ -21,8 +21,7 @@
 
 
         >>> is_prime(100000007)
-        If the number P is prime, the check may take a long time.
-        Working...
+        If the number P is prime, the check may take a long time. Working...
         True
 
 
