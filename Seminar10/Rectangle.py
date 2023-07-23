@@ -22,7 +22,8 @@ class Rectangle():
         return self.length * self.width
 
 
-a = Rectangle(10)
-b = Rectangle(10, 4)
-print(a.perimeter(), a.s())
-print(b.perimeter(), b.s())
+# if __name__ == '_main__':
+#     a = Rectangle(10)
+# b = Rectangle(3, 4)
+#     #print(a.perimeter(), a.s())
+# print(b.perimeter(), b.s())

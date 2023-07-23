@@ -59,13 +59,13 @@ class RectangleNEW():
 
 
 if __name__ == '__main__':
-    rect1 = RectangleNEW(4, 6)
+    rect1 = RectangleNEW(3, 4)
     rect2 = RectangleNEW(4, 5)
 
-    print(rect1.perimeter(), rect2.perimeter())
+    print(rect1.s())
     new_rect = rect1 + rect2
     print(new_rect)
-    print(rect1 - rect2)
+    # print(rect1 - rect2)
     print(rect1 == rect2)
-    print(rect1 > rect2)
-    print(rect1 < rect2)
+    # print(rect1 > rect2)
+    # print(rect1 < rect2)
