@@ -3,7 +3,7 @@ import unittest
 import prime
 
 def load_tests(loader, tests, ignore):
-    tests.addTests(doctest.DocTestSuite(prime))
+    tests.addTests(doctest.DocTestSuite(prime)) # берет из файла prime.py
     tests.addTests(doctest.DocFileSuite('prime.md'))
     return tests
 
