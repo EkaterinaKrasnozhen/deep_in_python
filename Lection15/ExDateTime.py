@@ -85,8 +85,10 @@ date_text = 'Дата 15 June 2007. День недели Friday. Время 02:
 original_date = datetime.fromisoformat(date_original)
 timestamp_date = datetime.fromtimestamp(date_timestamp)
 iso_date = datetime.fromisoformat(date_iso)
+
 text_date = datetime.strptime(date_text, 'Дата %d %B %Y. День недели %A. Время %H:%M:%S. Это %W неделя и %j день года.')# сложная строка с датой и временем
 print(original_date)
 print(timestamp_date)
 print(iso_date)
+print("___!___")
 print(text_date)
