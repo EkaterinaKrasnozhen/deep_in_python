@@ -15,8 +15,8 @@
 
 
 from typing import Callable
-from typing import Callable
 import logging
+
 
 FORMAT = '{levelname:<8} - {asctime}. {msg}' 
 logging.basicConfig(format=FORMAT, style='{', filename='logging2.log.', filemode='a', encoding='utf-8', level=logging.INFO)
